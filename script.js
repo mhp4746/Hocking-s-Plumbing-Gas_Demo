@@ -124,15 +124,20 @@
     );
   }
 
-  /* ---------- hero video (reveal once it can actually play) ---------- */
+  /* ---------- hero video (mobile-safe autoplay; poster shows if blocked) ---------- */
   const heroVideo = document.querySelector(".hero-video");
   const heroMedia = heroVideo && heroVideo.closest(".hero-media");
   if (heroVideo && heroMedia) {
-    const showVideo = () => heroMedia.classList.add("has-video");
-    // readyState >= 3 means enough data has buffered to play through
-    if (heroVideo.readyState >= 3) showVideo();
-    heroVideo.addEventListener("canplay", showVideo, { once: true });
-    heroVideo.addEventListener("loadeddata", showVideo, { once: true });
+    heroVideo.muted = true; // required for autoplay on iOS/Android
+    // only reveal the video once it is ACTUALLY playing — otherwise the poster stays
+    heroVideo.addEventListener("playing", () => heroMedia.classList.add("has-video"), { once: true });
+    const tryPlay = () => { const p = heroVideo.play(); if (p && p.catch) p.catch(() => {}); };
+    if (heroVideo.readyState >= 2) tryPlay();
+    else heroVideo.addEventListener("loadeddata", tryPlay, { once: true });
+    // iOS often needs a gesture — kick it off on the first tap/scroll
+    ["touchstart", "click", "scroll"].forEach((evt) =>
+      window.addEventListener(evt, tryPlay, { once: true, passive: true })
+    );
   }
 
   /* ---------- photo frames: reveal real photos, keep placeholder until then ---------- */

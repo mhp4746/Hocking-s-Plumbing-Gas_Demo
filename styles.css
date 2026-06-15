@@ -204,14 +204,14 @@ h3 { font-size: 1.3rem; letter-spacing: -.01em; }
   padding: 8rem 0 4.5rem; overflow: hidden; isolation: isolate;
   background: var(--ink);
 }
-.hero-media { position: absolute; inset: 0; z-index: -2; }
+.hero-media { position: absolute; inset: 0; z-index: -2; background: #04121a url('assets/hero-poster.jpg') center/cover no-repeat; }
 .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease; }
 
-/* once the real video loads, reveal it and fade out the decorative fallback */
+/* the poster image is the always-on base; the video fades in only once it's truly playing,
+   so a paused/blocked video on mobile never shows a play button */
 .hero-media.has-video .hero-video { opacity: 1; }
-.hero-media.has-video .hero-aurora,
-.hero-media.has-video .hero-grid,
-.hero-media.has-video .bubbles { opacity: 0; transition: opacity .8s ease; pointer-events: none; }
+/* old animated fallback removed — the real poster image covers it */
+.hero-aurora, .hero-grid, .bubbles { display: none; }
 
 /* animated aurora water background (fallback until 3D video added) */
 .hero-aurora {
@@ -719,3 +719,40 @@ h3 { font-size: 1.3rem; letter-spacing: -.01em; }
 
 /* contact details — give the plain values (service area, hours) the same weight as the links */
 .contact-points li > div > span:not(.cp-label) { color: var(--ink); font-weight: 600; }
+
+/* =========================================================
+   TOUCH + MOBILE FIXES
+   ========================================================= */
+
+/* instant taps: kill the 300ms delay and the grey tap-flash */
+* { -webkit-tap-highlight-color: rgba(0,0,0,0); }
+a, button, .btn, .service-card, .nav-toggle, .fab-call, input, select, textarea { touch-action: manipulation; }
+
+/* on touch screens, drop hover lifts so the FIRST tap registers (no double-tap) */
+@media (hover: none) {
+  .service-card:hover { transform: none; box-shadow: var(--shadow-sm); border-color: var(--line-soft); }
+  .service-card:hover::before { transform: scaleX(0); }
+  .service-card:hover .service-icon { transform: none; }
+  .btn:hover, .review-card:hover, .feature-card:hover { transform: none; }
+  .nav a:hover { background: transparent; }
+  .service-card:active { transform: scale(.99); }
+}
+
+/* phones */
+@media (max-width: 760px) {
+  .hero { min-height: 92svh; padding: 6.5rem 0 3.2rem; }
+  .hero h1 { font-size: clamp(2.5rem, 12vw, 3.6rem); margin: .8rem 0 1rem; }
+  .hero-lede { font-size: 1.02rem; max-width: 100%; }
+  .hero-actions { gap: .7rem; margin: 1.5rem 0 1.4rem; }
+  .hero-actions .btn { flex: 1 1 100%; }
+  .hero-trust { gap: .9rem 1.2rem; }
+  .page-hero { padding-top: 7.5rem; }
+  .page-hero h1 { font-size: clamp(2rem, 8.5vw, 2.7rem); }
+  .section-head { margin-bottom: 2.2rem; }
+}
+
+/* tablets & small windows: use the hamburger before the top nav gets cramped */
+@media (max-width: 920px) {
+  .nav, .header-cta { display: none; }
+  .nav-toggle { display: flex; }
+}
