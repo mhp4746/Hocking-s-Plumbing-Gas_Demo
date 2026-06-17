@@ -186,7 +186,7 @@ h3 { font-size: 1.3rem; letter-spacing: -.01em; }
 .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .mobile-nav {
-  position: fixed; inset: 0 0 auto 0; top: 100%; z-index: 99;
+  position: absolute; inset: 0 0 auto 0; top: 100%; z-index: 99;
   background: var(--paper-2); padding: 1.2rem 1.25rem 2rem;
   display: flex; flex-direction: column; gap: .35rem;
   transform: translateY(-12px); opacity: 0; visibility: hidden;
