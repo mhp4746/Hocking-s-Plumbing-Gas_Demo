@@ -832,4 +832,12 @@ a, button, .btn, .service-card, .nav-toggle, .fab-call, input, select, textarea 
   .review-grid { gap: 1rem; }
   .reviews-badge { margin-top: 1.6rem; }
   .cta-inner { padding: 2.4rem 0; }
+
+  /* --- mobile header: no hamburger; two small links top-right --- */
+  .nav-toggle { display: none !important; }   /* remove the 3-line menu */
+  .mobile-nav { display: none !important; }    /* drop the dropdown entirely */
+  .header-cta { display: none; }               /* no phone/quote button up here */
+  .nav { display: flex !important; margin-left: auto; gap: .1rem; }
+  .nav a { font-size: .82rem; padding: .4rem .5rem; }
+  .nav a:nth-child(3) { display: none; }       /* show only Services + About */
 }
