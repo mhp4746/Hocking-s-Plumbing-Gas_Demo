@@ -795,21 +795,30 @@ a, button, .btn, .service-card, .nav-toggle, .fab-call, input, select, textarea 
 .services .service-card { border-color: rgba(255,255,255,.07); }
 .services .services-foot { color: rgba(255,255,255,.74); }
 .services .services-foot a { color: var(--aqua); }
-/* ============================================
-   MOBILE POLISH PASS  (phones only, ≤600px)
-   ============================================ */
-@media (max-width: 600px) {
-  h2 { font-size: clamp(1.7rem, 7.2vw, 2.25rem); }
-  h3 { font-size: 1.15rem; }
-  .section-sub { font-size: 1rem; }
 
-  .section { padding: 3.4rem 0; }
+/* =========================================================
+   MOBILE POLISH  — phones only (≤600px); iPad & laptop untouched
+   ========================================================= */
+@media (max-width: 600px) {
+  /* headings & section spacing were tuned for desktop — bring them down */
+  h2 { font-size: clamp(1.7rem, 7.2vw, 2.25rem); }
+  .section { padding: 3.2rem 0; }
   .section-head { margin-bottom: 1.7rem; }
 
+  /* hero: composed, not oversized */
+  .hero { padding: 6rem 0 2.6rem; }
   .hero h1 { font-size: clamp(2.15rem, 9.5vw, 3rem); line-height: 1.06; margin: .6rem 0 .9rem; }
   .hero-lede { font-size: 1rem; }
-  .hero { padding: 6rem 0 2.6rem; }
 
-  .hero-card { padding: 1.25rem; }
-  .hero-trust { gap: .8rem 1.1rem; font-size: .86rem; }
+  /* close the long gap between the stats numbers and Jared's photo */
+  .stats-grid { padding: 2.4rem 0; }
+  .owner-intro { padding-top: 1.8rem; }
+  .owner-intro .split { gap: 1.5rem; }
+
+  /* service cards were too chunky on mobile */
+  .services .card-grid { gap: 1rem; }
+  .service-card { padding: 1.4rem 1.3rem; }
+  .service-icon { width: 50px; height: 50px; margin-bottom: .9rem; }
+  .service-card h3 { font-size: 1.16rem; }
+  .service-card p { font-size: .95rem; }
 }
