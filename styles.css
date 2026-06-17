@@ -340,7 +340,7 @@ h3 { font-size: 1.3rem; letter-spacing: -.01em; }
 .stat-label { display: block; margin-top: .5rem; font-size: .92rem; color: var(--text-soft); font-weight: 500; }
 
 /* ===================== SECTION SHELL ===================== */
-.section { padding: clamp(4.5rem, 9vw, 8rem) 0; }
+.section { padding: clamp(4.5rem, 9vw, 6rem) 0; }
 .section-head { max-width: 62ch; margin-bottom: 3.2rem; }
 .section-head h2 { margin: .8rem 0 1rem; }
 
@@ -800,25 +800,36 @@ a, button, .btn, .service-card, .nav-toggle, .fab-call, input, select, textarea 
    MOBILE POLISH  — phones only (≤600px); iPad & laptop untouched
    ========================================================= */
 @media (max-width: 600px) {
-  /* headings & section spacing were tuned for desktop — bring them down */
-  h2 { font-size: clamp(1.7rem, 7.2vw, 2.25rem); }
-  .section { padding: 3.2rem 0; }
-  .section-head { margin-bottom: 1.7rem; }
+  /* tighter type + much less section whitespace on phones */
+  h2 { font-size: clamp(1.6rem, 7vw, 2.1rem); }
+  .section { padding: 2.2rem 0; }
+  .section-head { margin-bottom: 1.3rem; }
+  .section-sub { font-size: .98rem; }
 
-  /* hero: composed, not oversized */
-  .hero { padding: 6rem 0 2.6rem; }
-  .hero h1 { font-size: clamp(2.15rem, 9.5vw, 3rem); line-height: 1.06; margin: .6rem 0 .9rem; }
+  /* hero */
+  .hero { padding: 5.5rem 0 2.4rem; }
+  .hero h1 { font-size: clamp(2.1rem, 9.2vw, 2.9rem); line-height: 1.07; margin: .55rem 0 .85rem; }
   .hero-lede { font-size: 1rem; }
 
-  /* close the long gap between the stats numbers and Jared's photo */
-  .stats-grid { padding: 2.4rem 0; }
-  .owner-intro { padding-top: 1.8rem; }
-  .owner-intro .split { gap: 1.5rem; }
+  /* stats ↔ owner photo: kill the dead space */
+  .stats-grid { padding: 1.9rem 0; }
+  .owner-intro { padding-top: 1.4rem; }
+  .owner-intro .split { gap: 1.3rem; }
 
-  /* service cards were too chunky on mobile */
-  .services .card-grid { gap: 1rem; }
-  .service-card { padding: 1.4rem 1.3rem; }
-  .service-icon { width: 50px; height: 50px; margin-bottom: .9rem; }
-  .service-card h3 { font-size: 1.16rem; }
-  .service-card p { font-size: .95rem; }
+  /* service cards: smaller and tighter */
+  .services .card-grid { gap: .9rem; }
+  .service-card { padding: 1.25rem 1.2rem; }
+  .service-icon { width: 46px; height: 46px; margin-bottom: .8rem; }
+  .service-card h3 { font-size: 1.12rem; }
+  .service-card p { font-size: .93rem; }
+  .services-foot { margin-top: 1.5rem; }
+
+  /* trim other tall sections that add empty space on phones */
+  .why-grid { gap: 1.6rem; }
+  .why-list { margin: 1.3rem 0; gap: .8rem; }
+  .area-grid { gap: 1.4rem; }
+  .steps { gap: 1.1rem; }
+  .review-grid { gap: 1rem; }
+  .reviews-badge { margin-top: 1.6rem; }
+  .cta-inner { padding: 2.4rem 0; }
 }
